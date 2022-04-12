@@ -18,15 +18,7 @@
     <script type="text/javascript">
       
 
-      var myStyle = new ol.style.Style({
-        image: new ol.style.Circle({
-          radius: 7,
-          fill: new ol.style.Fill({color: 'red'}),
-          stroke: new ol.style.Stroke({
-            color: [255,0,0], width: 2
-          })
-        })
-      })
+      //var myStyle = 
       var map = new ol.Map({
         target: 'map',
         layers: [
@@ -40,14 +32,51 @@
         })
         
       });
+      var Bay = new ol.Feature({
+                      geometry: new ol.geom.Point(ol.proj.fromLonLat([-122.420654, 37.775057])),
+                      
+                  })
+      Bay.setStyle(new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 7,
+          fill: new ol.style.Fill({color: 'red'}),
+          stroke: new ol.style.Stroke({
+            color: [255,0,0], width: 2
+          })
+        })
+      }))
+      var SLO = new ol.Feature({
+                      geometry: new ol.geom.Point(ol.proj.fromLonLat([-120.654602, 35.279259]))
+                  })
+      SLO.setStyle(new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 7,
+          fill: new ol.style.Fill({color: 'green'}),
+          stroke: new ol.style.Stroke({
+            color: [0,255,0], width: 2
+          })
+        })
+      }))
+      var Austin = new ol.Feature({
+                      geometry: new ol.geom.Point(ol.proj.fromLonLat([-97.745361, 30.297018]))
+                  })
+      Austin.setStyle(new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 7,
+          fill: new ol.style.Fill({color: 'blue'}),
+          stroke: new ol.style.Stroke({
+            color: [0,0,255], width: 2
+          })
+        })
+      }))
       var layer = new ol.layer.Vector({
           source: new ol.source.Vector({
               features: [
-                  new ol.Feature({
-                      geometry: new ol.geom.Point(ol.proj.fromLonLat([-122.420654, 37.775057]))
-                  })
+                  Bay,
+                  SLO,
+                  Austin
               ],
-              style: myStyle
+              
           })
       });
       map.addLayer(layer);
